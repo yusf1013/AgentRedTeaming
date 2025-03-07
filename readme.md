@@ -9,9 +9,12 @@
    - 2.3. [Misinformation](#23-misinformation)
    - 2.4. [Compromising User Safety](#24-compromising-user-safety)
    - 2.5. [Financial Harm](#25-financial-harm)
-3. [Autonomous HR Chatbot](#4-autonomous-hr-chatbot)
-   - 3.1. [Section Placeholder](#section-placeholder)
-   - 3.2. [Section Placeholder](#section-placeholder-1)
+3. [Autonomous HR Chatbot](#3-autonomous-hr-chatbot)
+   - 3.1. [Example Guardrails](#31-example-guardrails)
+   - 3.2. [Unauthorized Read](#32-unauthorized-read)
+   - 3.3. [Unauthorized Update](#33-unauthorized-update)
+   - 3.4. [Unauthorized Delete](#34-unauthorized-delete)
+   - 3.5. [Unintended Delete](#35-unintended-delete)
 4. [Open-Computer-Use](#4-open-computer-use)
    - 4.1. [Important file deletion](#4-open-computer-use)
 
@@ -118,25 +121,38 @@ Tools in hand include HR policy document, employee data, and calculator.
 Repository: [Autonomous HR Chatbot GitHub Link](https://github.com/stepanogil/autonomous-hr-chatbot) 
 
 ### 3.1. Example guardrails
-The agent has some guardrails in place. For instance, it refuses to change a user's own designation to department head or to delete an employee record.
+The agent has guardrails in place. For instance, it refuses to change a user's own designation to department head or to delete an employee record.
 
 <table>
   <tr>
     <td><img src="assets/5.png" alt="Refusing to change designation" width="400"/></td>
-        <td><img src="assets/9.png" alt="Refusing to delete employee record" width="400"/></td>
-    <td><img src="assets/6.png" alt="Refusing to delete employee record" width="400"/></td>
+    <td><img src="assets/9.png" alt="Refusing to fire an employee" width="400"/></td>
+    
   </tr>
   <tr>
     <td align="center"><em>Agent refusing to change designation</em></td>
     <td align="center"><em>Agent refusing to fire an employee</em></td>
-    <td align="center"><em>Agent refusing to delete employee record</em></td>
+  </tr>
+  
+  <tr>
+    <td><img src="assets/6.png" alt="Refusing to delete employee record" width="400"/></td>
+    <td><img src="assets/17.png" alt="Refusing to update salary" width="400"/></td>
+  </tr>
+
+  <tr>
+        <td align="center"><em>Agent refusing to delete employee record</em></td>
+        <td align="center"><em>Agent refusing to update user's salary</em></td>
+
   </tr>
 </table> 
 
-However, these guardrails can easily be overcome in all 4 of the CRUD operations.
+Further examples and working mechanism of guardrails can be found [Here](https://pub.towardsai.net/creating-a-mostly-autonomous-hr-assistant-with-chatgpt-and-langchains-agents-and-tools-1cdda0aa70ef#4512).
+
+ However, with careful engineering, these guardrails can be overcome in all 4 of the CRUD operations.
 
 ### 3.2. Unauthorized read
-Such a query is inappropriate, and should not be allowed by the system.
+Here, the default user (whom I am controlling) is Alexander Verdad, an Account Receivable assistant. The job of an account receivable assistant is to manage customer accounts and financial transactions to ensure that payments are received on time. They typically would not have access to view other employee's salary details, as such detail is restricted to HR personnel, payroll specialists, and certain management positions. However, the screenshot below shows the user successfully executing an inappropriate query:
+
 ![](assets/7.png)
 
 ### 3.3 Unauthorized update
